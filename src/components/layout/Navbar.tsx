@@ -5,12 +5,9 @@ import Link from "next/link";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { usePathname } from "next/navigation";
 import { MagneticEffect } from "@/components/ui/utils/MagneticEffect";
+import { NAV_LINKS } from "@/lib/campus";
 
-const navLinks = [
-  { name: "About", href: "/about" },
-  { name: "Our Work", href: "/work" },
-  { name: "Teams", href: "/teams" },
-];
+const navLinks = NAV_LINKS.filter((link) => link.href !== "/join");
 
 export const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -54,28 +51,39 @@ export const Navbar = () => {
         }`}
       >
         <div className="container mx-auto container-padding flex items-center justify-between">
-          <Link href="/" className="text-2xl font-bold font-geist tracking-tight  text-ivory-light/90 relative z-[121]">
-            JU SOCIALZ
+          <Link href="/" className="relative z-[121] leading-none">
+            <span className="block text-xl font-bold font-geist tracking-tight text-ivory-light/90">
+              JU SOCIALZ
+            </span>
+            <span className="mt-1 block text-[9px] font-bold tracking-[0.3em] text-slate-lighter">
+              NCR CAMPUS, ALWAR
+            </span>
           </Link>
           
           {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-6">
-            {navLinks.map((item) => (
+          <nav className="hidden md:flex items-center gap-8">
+            {navLinks.map((item) => {
+              const isActive = pathname === item.href;
+              return (
               <MagneticEffect key={item.name} intensity={0.2}>
                 <Link
                   href={item.href}
-                  className="text-sm font-medium hover:text-white transition-colors text-ivory-light/60"
+                  aria-current={isActive ? "page" : undefined}
+                  className={`text-sm font-medium hover:text-white transition-colors ${
+                    isActive ? "text-white" : "text-ivory-light/60"
+                  }`}
                 >
                   {item.name}
                 </Link>
               </MagneticEffect>
-            ))}
+              );
+            })}
             <MagneticEffect intensity={0.3}>
               <Link
-                href="/join#join-form"
-                className="px-6 py-2.5 glass-card text-ivory-light rounded-full text-sm font-bold hover:bg-white/10 transition-colors ml-2 block"
+                href="/join"
+                className="ml-2 block rounded-full bg-ivory-light px-6 py-2.5 text-sm font-bold text-obsidian-dark transition-all hover:bg-slate-lighter active:scale-95"
               >
-                Join The Team
+                Join Us
               </Link>
             </MagneticEffect>
           </nav>
@@ -116,7 +124,7 @@ export const Navbar = () => {
             className="fixed inset-0 z-[110] bg-obsidian-dark/95 backdrop-blur-2xl flex flex-col items-center justify-center md:hidden"
           >
             <nav className="flex flex-col items-center gap-10">
-              {[{ name: "Home", href: "/" }, ...navLinks].map((item, i) => (
+              {navLinks.map((item, i) => (
                 <motion.div
                   key={item.name}
                   initial={{ opacity: 0, y: 20 }}
@@ -141,11 +149,11 @@ export const Navbar = () => {
                 className="mt-12"
               >
                 <Link
-                  href="/join#join-form"
+                  href="/join"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="px-8 py-4 sm:px-10 sm:py-5 bg-slate-blue text-ivory-light rounded-full text-base sm:text-lg font-bold font-geist  tracking-widest hover:scale-105 hover:shadow-glow transition-all duration-300 inline-block"
+                  className="inline-block rounded-full bg-ivory-light px-8 py-4 font-geist text-base font-bold tracking-wide text-obsidian-dark transition-all hover:bg-slate-lighter active:scale-95 sm:px-10 sm:py-5 sm:text-lg"
                 >
-                  Join The Team
+                  Join Us
                 </Link>
               </motion.div>
             </nav>

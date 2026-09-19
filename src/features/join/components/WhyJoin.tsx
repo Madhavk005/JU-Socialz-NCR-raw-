@@ -1,65 +1,77 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion } from"framer-motion";
 
 export interface ReasonData {
   title: string;
   desc: string;
 }
 
+const ease = [0.22, 1, 0.36, 1] as const;
+
 const FALLBACK_REASONS: ReasonData[] = [
-  { title: "Build a Portfolio That Matters", desc: "Work on real campaigns, events, and brand collaborations. Graduate with a portfolio that speaks louder than your degree." },
-  { title: "Learn From Industry Mentors", desc: "Workshops and masterclasses with professional photographers, filmmakers, and digital marketers from the industry." },
-  { title: "Access to Professional Gear", desc: "Sony A7 series, DJI gimbals, studio lighting, Mac workstations with Adobe Creative Cloud — all available for member projects." },
-  { title: "Cover Major Campus Events", desc: "Be the official media team for fests, conferences, and cultural events. Your work reaches thousands of students." },
-  { title: "Join a Creative Community", desc: "Collaborate with 100+ passionate creators across verticals. Find your co-founders, creative partners, and lifelong friends." },
-  { title: "Internship & Job Referrals", desc: "Our alumni network spans top creative agencies, production houses, and brands. We help you land opportunities." },
+  { title:"Ship Real Work", desc:"Cover fests, run campaigns, publish films. Everything you make goes live to a real audience — from day one." },
+  { title:"Learn By Doing", desc:"No lectures. Pick up cameras, timelines, and design tools inside actual productions, guided by seniors who have shipped before." },
+  { title:"Seven Crafts, One Crew", desc:"Start in one vertical, collide with six others. Editors learn cinematography; designers learn storytelling." },
+  { title:"Cover Campus Life", desc:"Help tell the story of NCR Campus, Alwar — fests, events, and everyday moments. Your work shapes how the campus sees itself." },
+  { title:"Find Your People", desc:"Co-founders, collaborators, lifelong friends. The team becomes the reason campus feels like home." },
+  { title:"Proof, Not Certificates", desc:"Leave with published work and a body of proof — a portfolio built on shipped projects, not paper." },
 ];
 
 export const WhyJoin = ({ reasonsProp }: { reasonsProp?: ReasonData[] }) => {
   const reasons = reasonsProp && reasonsProp.length > 0 ? reasonsProp : FALLBACK_REASONS;
   return (
-    <section className="section-padding bg-obsidian-dark border-t border-white/[0.02]">
-      <div className="container mx-auto px-6 max-w-6xl">
-        <div className="text-center mb-20">
+    <section className="section-padding relative scroll-mt-20 overflow-hidden">
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0">
+        <div className="animate-gradient-pan absolute inset-x-0 top-0 h-72 bg-gradient-to-r from-transparent via-slate-blue/15 to-transparent" />
+      </div>
+
+      <div className="container relative z-10 mx-auto max-w-6xl px-6 md:px-12">
+        <div className="mb-12 text-center md:mb-16">
           <motion.p
-            initial={{ opacity: 0, y: 10 }}
+            initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="text-xs font-bold tracking-[0.3em] text-slate-blue mb-6 uppercase"
+            transition={{ duration: 0.6 }}
+            className="mb-6 text-[11px] font-bold uppercase tracking-[0.3em] text-slate-lighter md:text-xs"
           >
             Benefits
           </motion.p>
           <motion.h2
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-            className="text-fluid-display leading-[0.9] font-bold font-geist text-ivory-light tracking-tight"
+            transition={{ duration: 0.8, ease }}
+            className="text-balance font-geist text-4xl font-bold tracking-tight text-ivory-light md:text-6xl lg:text-7xl"
           >
-            What You Get <br className="hidden lg:block" />
-            <span className="text-slate-blue italic font-light tracking-tight lowercase">after joining.</span>
+            What you get{""}
+            <span className="font-display font-light italic text-slate-lighter">
+              after joining.
+            </span>
           </motion.h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {reasons.map((r, idx) => (
             <motion.div
-              key={idx}
-              initial={{ opacity: 0, y: 30 }}
+              key={r.title}
+              initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.6, delay: idx * 0.08, ease: [0.22, 1, 0.36, 1] }}
-              className="glass-card rounded-2xl p-8 border border-white/5 hover:border-slate-blue/30 hover:bg-white/[0.02] transition-all duration-500 group"
+              viewport={{ once: true, margin:"-40px" }}
+              transition={{ duration: 0.6, delay: (idx % 3) * 0.08, ease }}
+              className="glass-card group relative overflow-hidden rounded-2xl p-6 transition-all duration-500 hover:-translate-y-1 hover:border-slate-lighter/40 hover:shadow-glow md:p-8"
             >
-              <div className="w-10 h-10 rounded-full bg-slate-blue/20 flex items-center justify-center mb-5 group-hover:bg-slate-blue/30 transition-colors">
-                <span className="text-slate-blue font-bold font-geist text-sm">0{idx + 1}</span>
-              </div>
-              <h3 className="text-xl font-bold font-geist text-ivory-light tracking-tight mb-3">
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-slate-blue/25 blur-[80px] opacity-0 transition-opacity duration-700 group-hover:opacity-100"
+              />
+              <span className="font-display text-sm italic text-slate-lighter/50 transition-colors duration-500 group-hover:text-slate-lighter">
+                {String(idx + 1).padStart(2,"0")}
+              </span>
+              <h3 className="mt-3 font-geist text-xl font-bold tracking-tight text-ivory-light">
                 {r.title}
               </h3>
-              <p className="text-sm font-inter text-ivory-dark/60 leading-relaxed">
+              <p className="mt-2 font-inter text-sm leading-relaxed text-ivory-light/55">
                 {r.desc}
               </p>
             </motion.div>

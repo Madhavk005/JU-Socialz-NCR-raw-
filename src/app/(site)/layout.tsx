@@ -5,6 +5,7 @@ import { ScrollToTop } from "@/components/ui/utils/ScrollToTop";
 import { StickyCta } from "@/components/layout/StickyCta";
 import { Footer } from "@/components/layout/Footer";
 import { ScrollProgress } from "@/components/ui/shared/ScrollProgress";
+import { PageGlow } from "@/components/ui/shared/Decor";
 import { Analytics } from "@/components/ui/shared/Analytics";
 import { ErrorBoundary } from "@/components/ui/utils/ErrorBoundary";
 
@@ -20,9 +21,10 @@ export default function SiteLayout({
       <ScrollToTop />
       <SmoothScroll>
         <ErrorBoundary>
+          <PageGlow />
           <ScrollProgress />
           <Navbar />
-          <main className="w-full relative">{children}</main>
+          <main className="w-full relative z-10">{children}</main>
           <Footer />
           <StickyCta />
         </ErrorBoundary>

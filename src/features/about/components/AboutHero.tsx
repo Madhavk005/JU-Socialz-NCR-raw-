@@ -1,64 +1,56 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion } from"framer-motion";
+
+const ease = [0.22, 1, 0.36, 1] as const;
 
 export const AboutHero = () => {
   return (
-    <section className="relative h-[100dvh] flex items-center justify-center overflow-hidden bg-obsidian-dark pt-24">
-      {/* Cinematic Background */}
-      <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-obsidian-dark/80 z-10" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(57,80,162,0.15)_0%,rgba(17,17,17,1)_100%)] z-20 mix-blend-multiply" />
-        <div 
-          className="absolute inset-0 opacity-[0.03] z-30 pointer-events-none mix-blend-overlay" 
-          style={{ backgroundImage: 'url("https://upload.wikimedia.org/wikipedia/commons/7/76/1k_Dissolve_Noise_Texture.png")' }} 
-        />
+    <section className="relative flex min-h-[72dvh] flex-col justify-center overflow-hidden pb-12 pt-32">
+      {/* Live gradient — panning wash + drifting color fields */}
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0">
+        <div className="animate-gradient-pan absolute inset-0 bg-gradient-to-br from-slate-blue/25 via-transparent to-slate-light/20" />
+        <div className="animate-drift-a absolute -top-24 left-[8%] h-[24rem] w-[24rem] rounded-full bg-slate-blue/30 blur-[130px]" />
+        <div className="animate-drift-b absolute bottom-[-6rem] right-[4%] h-[20rem] w-[20rem] rounded-full bg-slate-light/20 blur-[120px]" />
+        <div className="animate-pulse-glow absolute left-1/2 top-1/3 h-[16rem] w-[26rem] -translate-x-1/2 rounded-full bg-ivory-gold/[0.06] blur-[110px]" />
       </div>
+      <div className="absolute inset-0 bg-[url(/grid.svg)] bg-center opacity-40 [mask-image:radial-gradient(ellipse_at_center,white_20%,transparent_75%)]" />
 
-      <div className="container relative z-30 px-6 mx-auto text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
+      <div className="container relative z-10 mx-auto max-w-4xl px-6 text-center md:px-12">
+        <motion.p
+          initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-          className="max-w-5xl mx-auto"
+          transition={{ delay: 0.2, duration: 0.7, ease }}
+          className="mb-6 flex items-center justify-center gap-3 text-[11px] font-bold uppercase tracking-[0.3em] text-slate-lighter md:text-xs"
         >
-          <motion.h1 
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.2, duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-            className="text-fluid-display leading-[0.9] font-bold font-geist tracking-tight text-ivory-light mb-8 text-balance "
-          >
-            More Than A Media Team.<br className="hidden md:block" />{" "}
-            <span className="italic font-light text-slate-lighter tracking-tight">A Culture Built By Students.</span>
-          </motion.h1>
-          
-          <motion.p 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.6, duration: 1.5 }}
-            className="text-lg md:text-2xl font-inter text-ivory-dark max-w-3xl mx-auto text-balance leading-[1.8] font-light"
-          >
-            JU-Socialz is the creative force shaping the digital identity of JECRC University through storytelling, design, and cinematic experiences.
-          </motion.p>
-        </motion.div>
-      </div>
+          <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-slate-lighter" />
+          The Official Media Team — NCR Campus, Alwar
+        </motion.p>
 
-      {/* Ambient Scroll Indicator */}
-      <motion.div 
-        className="absolute bottom-12 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5, duration: 1 }}
-      >
-        <span className="text-[10px]  tracking-[0.3em] text-ivory-dark/60 mb-6">Discover Our Story</span>
-        <div className="w-[1px] h-24 bg-white/10 relative overflow-hidden">
-          <motion.div 
-            animate={{ y: [-96, 96] }}
-            transition={{ duration: 2.5, repeat: Infinity, ease: "linear" }}
-            className="w-full h-1/2 bg-ivory-light" 
-          />
-        </div>
-      </motion.div>
+        <h1 className="text-balance font-geist text-4xl font-bold tracking-tight text-ivory-light md:text-6xl lg:text-7xl">
+          <motion.span
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.35, duration: 0.8, ease }}
+            className="block"
+          >
+            The official media team{""}
+            <span className="animate-gradient-pan bg-gradient-to-r from-slate-lighter via-ivory-light to-slate-lighter bg-clip-text font-display font-light italic text-transparent">
+              of JECRC University.
+            </span>
+          </motion.span>
+        </h1>
+
+        <motion.p
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.55, duration: 0.8, ease }}
+          className="mx-auto mt-6 max-w-xl text-balance font-inter text-base leading-relaxed text-ivory-light/65 md:text-lg"
+        >
+          Student-driven stories, films, designs, and the digital identity of
+          NCR Campus, Alwar.
+        </motion.p>
+      </div>
     </section>
   );
 };

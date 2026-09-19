@@ -1,43 +1,53 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion } from"framer-motion";
 
 export const WhoWeAre = () => {
   return (
-    <section className="section-padding bg-obsidian-dark border-t border-white/[0.04]">
-      <div className="container mx-auto container-padding">
-        <div className="flex flex-col md:flex-row gap-16 md:gap-24">
-          <div className="flex-1">
-            <motion.h2 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              className="text-fluid-display font-bold font-geist text-ivory-light  tracking-tight leading-tight md:sticky md:top-40"
-            >
-              Who <br className="hidden md:block" /> We Are
-            </motion.h2>
-          </div>
-          <div className="flex-1">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-              className="prose prose-invert prose-lg"
-            >
-              <p className="text-xl md:text-2xl font-inter text-ivory-dark/90 leading-relaxed mb-8 text-balance">
-                JU-Socialz is not a traditional university initiative. We are a premium student media and marketing ecosystem, acting as the digital heartbeat of JECRC University.
-              </p>
-              <p className="text-lg font-inter text-ivory-dark/60 leading-relaxed mb-8 text-balance">
-                We are a collective of designers, editors, videographers, and strategists. Every campaign, every cinematic aftermovie, and every viral reel that defines the university's culture passes through our screens.
-              </p>
-              <p className="text-lg font-inter text-ivory-dark/60 leading-relaxed text-balance">
-                Our mission is to build impact, tell unforgettable stories, and provide a launchpad for the next generation of creative professionals.
-              </p>
-            </motion.div>
-          </div>
-        </div>
+    <section id="about" className="section-padding relative scroll-mt-20 overflow-hidden">
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0">
+        <div className="animate-drift-a absolute left-[10%] top-[10%] h-[20rem] w-[20rem] rounded-full bg-slate-blue/15 blur-[140px]" />
+      </div>
+      <div className="container relative z-10 mx-auto max-w-4xl px-6 text-center md:px-12">
+        <motion.p
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mb-6 text-[11px] font-bold uppercase tracking-[0.3em] text-slate-lighter md:text-xs"
+        >
+          About
+        </motion.p>
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="text-balance font-geist text-4xl font-bold tracking-tight text-ivory-light md:text-6xl lg:text-7xl"
+        >
+          Not an initiative.{""}
+          <span className="font-display font-light italic text-slate-lighter">
+            A family.
+          </span>
+        </motion.h2>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+          className="mx-auto mt-8 max-w-2xl space-y-6 font-inter text-base leading-relaxed text-ivory-light/65 md:text-lg"
+        >
+          <p className="text-balance">
+            JU Socialz at NCR Campus, Alwar is more than a creative community.
+            It&apos;s a family of students who come together to explore
+            creativity, express ideas, and grow — across media, design,
+            storytelling, and campus culture.
+          </p>
+          <p className="text-balance">
+            JU Socialz is the family. The verticals are where you find your
+            space.
+          </p>
+        </motion.div>
       </div>
     </section>
   );

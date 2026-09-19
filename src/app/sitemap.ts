@@ -9,21 +9,13 @@ const VERTICAL_SLUGS = [
   'social-media', 'content-marketing', 'reel-creation', 'ai-automation'
 ]
 
-const TEAM_SLUGS = [
-  'kartik-saini', 'yash-raj', 'ansh-bhatt', 'ayush-yadav',
-  'jay-aditya-sharma', 'krish-menaria', 'aditi-agrawal',
-  'ankit-maji', 'azad-nagar', 'hitesh-nagar', 'madhav-kohli'
-]
-
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages = [
     { url: baseUrl, priority: 1 },
     { url: `${baseUrl}/about`, priority: 0.8 },
-    { url: `${baseUrl}/work`, priority: 0.8 },
-    { url: `${baseUrl}/team`, priority: 0.7 },
+    { url: `${baseUrl}/teams`, priority: 0.7 },
     { url: `${baseUrl}/join`, priority: 0.9 },
-    { url: `${baseUrl}/maverick`, priority: 0.7 },
-    { url: `${baseUrl}/ju-creators`, priority: 0.7 },
+    { url: `${baseUrl}/privacy`, priority: 0.3 },
   ].map(p => ({ ...p, lastModified: new Date(), changeFrequency: 'monthly' as const }))
 
   const verticalPages = VERTICAL_SLUGS.map(slug => ({
@@ -33,12 +25,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }))
 
-  const teamPages = TEAM_SLUGS.map(slug => ({
-    url: `${baseUrl}/teams/${slug}`,
-    lastModified: new Date(),
-    changeFrequency: 'monthly' as const,
-    priority: 0.5,
-  }))
-
-  return [...staticPages, ...verticalPages, ...teamPages]
+  return [...staticPages, ...verticalPages]
 }

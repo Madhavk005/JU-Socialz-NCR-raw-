@@ -1,6 +1,6 @@
 # JU-Socialz
 
-The official media team website of JECRC University — a cinematic showcase of student creators, their work, and the culture behind the lens.
+JU Socialz at NCR Campus, Alwar — a student-driven creative and media community. Explore the verticals, find your creative space, and be part of the community.
 
 Built with **Next.js 16**, **Sanity CMS**, **Tailwind CSS v4**, and **Framer Motion**.
 

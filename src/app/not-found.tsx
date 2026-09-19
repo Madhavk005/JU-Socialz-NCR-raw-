@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { FiArrowRight } from "react-icons/fi";
+import { ArrowRight } from "lucide-react";
 
 export default function NotFound() {
   return (
@@ -25,7 +25,7 @@ export default function NotFound() {
             className="group relative inline-flex items-center gap-2 px-8 py-4 bg-white/5 hover:bg-slate-blue border border-white/10 hover:border-slate-blue text-ivory-light rounded-full transition-all duration-300 font-medium overflow-hidden"
           >
             <span className="relative z-10">Return to Base</span>
-            <FiArrowRight className="relative z-10 group-hover:translate-x-1 transition-transform" />
+            <ArrowRight className="relative z-10 group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>
       </div>

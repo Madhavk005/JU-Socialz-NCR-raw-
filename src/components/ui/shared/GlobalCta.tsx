@@ -1,51 +1,56 @@
 "use client";
 
-import { motion } from "framer-motion";
-import Link from "next/link";
+import { motion } from"framer-motion";
+import Link from"next/link";
+import { ArrowUp } from"lucide-react";
 
 interface GlobalCtaProps {
   titleLine1?: string;
   titleLine2?: string;
+  copy?: string;
+  ctaLabel?: string;
+  ctaHref?: string;
 }
 
-export const GlobalCta = ({ 
-  titleLine1 = "Be the part of the", 
-  titleLine2 = "CREW." 
+export const GlobalCta = ({
+  titleLine1 ="Your ideas",
+  titleLine2 ="belong here.",
+  copy ="Discover the verticals, find your creative space, and be part of JU Socialz at NCR Campus, Alwar.",
+  ctaLabel ="Explore Our Verticals",
+  ctaHref ="/#verticals",
 }: GlobalCtaProps = {}) => {
   return (
-    <section className="section-padding bg-obsidian relative overflow-hidden flex flex-col items-center justify-center text-center border-t border-white/[0.02]">
-      {/* Cinematic Edge-to-Edge Gradient */}
-      <div className="absolute inset-0 bg-gradient-to-t from-slate-blue/5 to-transparent pointer-events-none" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,rgba(57,80,162,0.15)_0%,rgba(17,17,17,1)_70%)] pointer-events-none" />
+    <section className="section-padding relative overflow-hidden">
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0">
+        <div className="animate-gradient-pan absolute inset-0 bg-gradient-to-br from-slate-blue/20 via-transparent to-slate-light/15" />
+        <div className="animate-drift-a absolute left-1/2 top-1/2 h-[26rem] w-[26rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-slate-blue/20 blur-[130px]" />
+      </div>
 
-      <div className="container relative z-10 px-6 mx-auto">
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-          className="text-xs md:text-sm font-bold tracking-[0.3em]  text-slate-lighter mb-8"
-        >
-          Your Next Chapter
-        </motion.p>
-        
+      <div className="container relative z-10 mx-auto max-w-4xl px-6 md:px-12">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 1.2, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+          viewport={{ once: true, margin:"-100px" }}
+          transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+          className="glass-card group relative overflow-hidden rounded-[2rem] px-6 py-14 text-center transition-all duration-500 hover:border-slate-lighter/30 hover:shadow-glow md:px-12 md:py-20"
         >
-          <h2 className="text-fluid-display leading-[1] font-bold font-geist text-ivory-light  tracking-tight mb-12 text-balance mx-auto max-w-5xl">
-            {titleLine1} <br />
-            <span className="italic text-ivory-dark/60">{titleLine2}</span>
+          <div className="animate-gradient-pan absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-slate-blue via-slate-lighter to-slate-blue" />
+          <h2 className="text-balance font-geist text-4xl font-bold tracking-tight text-ivory-light md:text-6xl lg:text-7xl">
+            {titleLine1}{""}
+            <span className="font-display font-light italic text-slate-lighter">
+              {titleLine2}
+            </span>
           </h2>
-          
-          <Link 
-            href="/join" 
-            className="inline-flex items-center gap-4 px-12 py-6 bg-transparent border-2 border-slate-blue text-ivory-light rounded-full font-bold  tracking-widest text-sm hover:bg-slate-blue hover:text-white transition-all duration-500 ease-cinematic group relative overflow-hidden"
+          <p className="mx-auto mt-6 max-w-xl text-balance font-inter text-base leading-relaxed text-ivory-light/60 md:text-lg">
+            {copy}
+          </p>
+          <Link
+            href={ctaHref}
+            className="group/btn relative mt-10 inline-flex items-center gap-3 overflow-hidden rounded-full bg-ivory-light px-9 py-4 text-xs font-bold uppercase tracking-[0.2em] text-obsidian-dark transition-all duration-300 hover:bg-slate-lighter active:scale-95"
           >
-            <span className="relative z-10">Join The Movement</span>
-            <span className="text-lg leading-none transform group-hover:translate-x-2 transition-transform duration-500 relative z-10">→</span>
+            <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/50 to-transparent transition-transform duration-700 group-hover/btn:translate-x-full" />
+            <span className="relative">{ctaLabel}</span>
+            <ArrowUp className="relative h-4 w-4 transition-transform duration-300 group-hover/btn:-translate-y-1" />
           </Link>
         </motion.div>
       </div>

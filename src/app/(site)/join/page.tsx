@@ -4,12 +4,12 @@ import { GlobalCta } from "@/components/ui/shared/GlobalCta";
 import { JoinHero } from "@/features/join/components/JoinHero";
 import { WhyJoin } from "@/features/join/components/WhyJoin";
 import { JoinRoles } from "@/features/join/components/JoinRoles";
-import { JoinForm } from "@/features/join/components/JoinForm";
+import { JoinProcess } from "@/features/join/components/JoinProcess";
 import { JoinFaq } from "@/features/join/components/JoinFaq";
 
 export const metadata: Metadata = generatePageMetadata({
   title: "Join Us",
-  description: "Apply to join JU Socialz — the official media team of JECRC University. Open to all students across cinematography, editing, design, social media management, and more.",
+  description: "Discover JU Socialz at NCR Campus, Alwar — a student-driven creative and media community across cinematography, editing, design, social media, and more.",
   path: "/join",
 });
 
@@ -19,37 +19,37 @@ export default function JoinPage() {
     {
       id: "1",
       question: "What is JU Socialz?",
-      answer: "JU Socialz is the official media and content creation initiative of JU, focused on photography, videography, editing, and social media management.",
+      answer: "The official media team of JECRC University, NCR Campus Alwar — students across seven verticals making the films, designs, reels, and stories the campus runs on.",
       order_index: 1
     },
     {
       id: "2",
-      question: "Who can apply?",
-      answer: "Any JU student from any year and any branch can apply. We look for passion and creativity more than experience.",
+      question: "Who can join?",
+      answer: "Any student of NCR Campus, Alwar — any year, any branch. Curiosity beats experience, and commitment beats talent.",
       order_index: 2
     },
     {
       id: "3",
-      question: "What is the time commitment?",
-      answer: "We typically meet 2-3 times a week for shoots, workshops, and editing sessions. Major events may require more time.",
+      question: "Do I need experience or gear?",
+      answer: "Neither. Your phone and free tools are enough to start — each vertical teaches its craft from zero.",
       order_index: 3
     },
     {
       id: "4",
-      question: "Do I need my own equipment?",
-      answer: "No! The club has cameras, lenses, lighting equipment, and editing stations available for members to use.",
+      question: "How much time does it take?",
+      answer: "Two to three meetups a week — shoots, edits, workshops — with an extra push around big campus events.",
       order_index: 4
     },
     {
       id: "5",
       question: "Can I join multiple verticals?",
-      answer: "Yes! You can select a primary skill and up to 2 secondary skills during application. We encourage cross-disciplinary learning.",
+      answer: "Yes. Choose one home vertical and roam into two more. The best work happens at the overlaps.",
       order_index: 5
     },
     {
       id: "6",
-      question: "What happens after I apply?",
-      answer: "Applications are reviewed by the core team. Shortlisted candidates are invited for an informal interaction. Results are announced within 2 weeks.",
+      question: "How do I get in?",
+      answer: "Applications open every semester. Apply, meet the team for a short interaction, and hear back within two weeks.",
       order_index: 6
     }
   ];
@@ -67,43 +67,43 @@ export default function JoinPage() {
   const reasons = [
     {
       id: "1",
-      title: "Build a Portfolio That Matters",
-      desc: "Work on real campaigns, events, and brand collaborations. Graduate with a portfolio that speaks louder than your degree.",
+      title: "Ship Real Work",
+      desc: "Cover fests, run campaigns, publish films. Everything you make goes live to a real audience — from day one.",
       icon: "briefcase",
       order_index: 1
     },
     {
       id: "2",
-      title: "Learn From Industry Mentors",
-      desc: "Workshops and masterclasses with professional photographers, filmmakers, and digital marketers from the industry.",
+      title: "Learn By Doing",
+      desc: "No lectures. Pick up cameras, timelines, and design tools inside actual productions, guided by seniors who have shipped before.",
       icon: "graduation-cap",
       order_index: 2
     },
     {
       id: "3",
-      title: "Access to Professional Gear",
-      desc: "Sony A7 series, DJI gimbals, studio lighting, Mac workstations with Adobe Creative Cloud - all available for member projects.",
+      title: "Seven Crafts, One Crew",
+      desc: "Start in one vertical, collide with six others. Editors learn cinematography; designers learn storytelling.",
       icon: "camera",
       order_index: 3
     },
     {
       id: "4",
-      title: "Cover Major Campus Events",
-      desc: "Be the official media team for fests, conferences, and cultural events. Your work reaches thousands of students.",
+      title: "Cover Campus Life",
+      desc: "Help tell the story of NCR Campus, Alwar — fests, events, and everyday moments. Your work shapes how the campus sees itself.",
       icon: "clapperboard",
       order_index: 4
     },
     {
       id: "5",
-      title: "Join a Creative Community",
-      desc: "Collaborate with 100+ passionate creators across verticals. Find your co-founders, creative partners, and lifelong friends.",
+      title: "Find Your People",
+      desc: "Co-founders, collaborators, lifelong friends. The team becomes the reason campus feels like home.",
       icon: "users",
       order_index: 5
     },
     {
       id: "6",
-      title: "Internship & Job Referrals",
-      desc: "Our alumni network spans top creative agencies, production houses, and brands. We help you land opportunities.",
+      title: "Proof, Not Certificates",
+      desc: "Leave with published work and a body of proof — a portfolio built on shipped projects, not paper.",
       icon: "trending-up",
       order_index: 6
     }
@@ -115,11 +115,11 @@ export default function JoinPage() {
         <JoinHero />
         <WhyJoin reasonsProp={reasons} />
         <JoinRoles rolesProp={roles} />
-        <JoinForm />
+        <JoinProcess />
         <JoinFaq faqsProp={faqs} />
       </main>
 
-      <GlobalCta titleLine1="Have Any" titleLine2="Query?!!" />
+      <GlobalCta titleLine1="Your ideas" titleLine2="belong here." />
     </>
   );
 }

@@ -11,7 +11,7 @@ interface PageMeta {
 
 export function generatePageMetadata({ title, description, path, ogImage }: PageMeta): Metadata {
   const url = `${siteUrl}${path}`;
-  const image = ogImage || "/logo.png";
+  const image = ogImage || `${siteUrl}/logo.png`;
 
   return {
     title,
@@ -21,7 +21,7 @@ export function generatePageMetadata({ title, description, path, ogImage }: Page
       title,
       description,
       url,
-      siteName: "JU Socialz",
+      siteName: "JU Socialz — NCR Campus, Alwar",
       images: [{ url: image, width: 1200, height: 630, alt: title }],
       locale: "en_US",
       type: "website",
